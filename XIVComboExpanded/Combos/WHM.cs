@@ -8,6 +8,7 @@ internal static class WHM
     public const byte JobID = 24;
 
     public const uint
+        Stone = 119,
         Cure = 120,
         Medica = 124,
         Raise = 125,
@@ -25,12 +26,15 @@ internal static class WHM
         Temperance = 16536,
         Holy3 = 25860,
         Aquaveil = 25861,
-        LiturgyOfTheBell = 25862;
+        LiturgyOfTheBell = 25862,
+        Glare4 = 37009,
+        Medica3 = 37010;
 
     public static class Buffs
     {
         public const ushort
-            Placeholder = 0;
+
+            Glare4Ready = 3879;
     }
 
     public static class Debuffs
@@ -46,7 +50,8 @@ internal static class WHM
             Cure2 = 30,
             AfflatusSolace = 52,
             AfflatusMisery = 74,
-            AfflatusRapture = 76;
+            AfflatusRapture = 76,
+            Glare4 = 92;
     }
 }
 
@@ -177,6 +182,25 @@ internal class WhiteMageMedica : CustomCombo
 
                 if (level >= WHM.Levels.AfflatusRapture && gauge.Lily > 0)
                     return WHM.AfflatusRapture;
+            }
+        }
+
+        return actionID;
+    }
+}
+
+internal class WhiteMageGlare4Feature : CustomCombo
+{
+    protected internal override CustomComboPreset Preset { get; } = CustomComboPreset.WhmAny;
+
+    protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+    {
+        if (actionID == WHM.Stone)
+        {
+            if (IsEnabled(CustomComboPreset.WhiteMageGlare4Feature))
+            {
+                if (level >= WHM.Levels.Glare4 && HasEffect(WHM.Buffs.Glare4Ready))
+                    return WHM.Glare4;
             }
         }
 

@@ -31,7 +31,7 @@ internal static class SAM
         HissatsuSenei = 16481,
         HissatsuGuren = 7496,
         Ikishoten = 16482,
-        Shoha2 = 25779,
+        //Shoha2 = 25779,
         OgiNamikiri = 25781,
         KaeshiNamikiri = 25782;
 
@@ -42,7 +42,8 @@ internal static class SAM
             EyesOpen = 1252,
             Jinpu = 1298,
             Shifu = 1299,
-            OgiNamikiriReady = 2959;
+            OgiNamikiriReady = 2959,
+            ZanshinReady = 3855;
     }
 
     public static class Debuffs
@@ -67,10 +68,11 @@ internal static class SAM
             HissatsuSenei = 72,
             TsubameGaeshi = 76,
             Shoha = 80,
-            Shoha2 = 82,
+            //Shoha2 = 82,
             Hyosetsu = 86,
             Fuko = 86,
-            OgiNamikiri = 90;
+            OgiNamikiri = 90,
+            Zanshin = 96;
     }
 }
 
@@ -327,12 +329,6 @@ internal class SamuraiKyuten : CustomCombo
         if (actionID == SAM.HissatsuKyuten)
         {
             var gauge = GetJobGauge<SAMGauge>();
-
-            if (IsEnabled(CustomComboPreset.SamuraiKyutenShoha2Feature))
-            {
-                if (level >= SAM.Levels.Shoha2 && gauge.MeditationStacks >= 3)
-                    return SAM.Shoha2;
-            }
 
             if (IsEnabled(CustomComboPreset.SamuraiKyutenGurenFeature))
             {

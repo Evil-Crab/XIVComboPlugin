@@ -41,11 +41,24 @@ internal class SwiftRaiseFeature : CustomCombo
             (actionID == SCH.Resurrection && level >= SCH.Levels.Resurrection) ||
             (actionID == SGE.Egeiro && level >= SGE.Levels.Egeiro) ||
             (actionID == WHM.Raise && level >= WHM.Levels.Raise) ||
-            (actionID == RDM.Verraise && level >= RDM.Levels.Verraise && !HasEffect(RDM.Buffs.Dualcast)) ||
             (actionID == BLU.AngelWhisper && level >= BLU.Levels.AngelWhisper))
         {
             if (level >= ADV.Levels.Swiftcast && IsOffCooldown(ADV.Swiftcast))
                 return ADV.Swiftcast;
+        }
+
+        if (actionID == RDM.Verraise && level >= RDM.Levels.Verraise && !HasEffect(RDM.Buffs.Dualcast))
+        {
+            if (IsEnabled(CustomComboPreset.AdvVerRaiseToVerCureFeature))
+            {
+                if (level >= RDM.Levels.Vercure)
+                    return RDM.Vercure;
+            }
+            else if (!IsEnabled(CustomComboPreset.AdvDisableVerRaiseFeature))
+            {
+                if (level >= ADV.Levels.Swiftcast && IsOffCooldown(ADV.Swiftcast))
+                    return ADV.Swiftcast;
+            }
         }
 
         return actionID;

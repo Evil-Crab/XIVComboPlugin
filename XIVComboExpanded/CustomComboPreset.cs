@@ -87,6 +87,16 @@ public enum CustomComboPreset
     [CustomComboInfo("Swift Raise Feature", "Replace Ascend, Ressurection, Egeiro, Raise, Verraise, and Angel Whisper with Swiftcast when it is off cooldown (and Dualcast isn't up).", ADV.JobID)]
     AdvSwiftcastFeature = 1000,
 
+    [ParentCombo(AdvSwiftcastFeature)]
+    [ConflictingCombos(AdvVerRaiseToVerCureFeature)]
+    [CustomComboInfo("Disable for VerRaise", "Doesn't apply this feature to RDM's VerRaise.", ADV.JobID)]
+    AdvDisableVerRaiseFeature = 1002,
+
+    [ParentCombo(AdvSwiftcastFeature)]
+    [ConflictingCombos(AdvDisableVerRaiseFeature)]
+    [CustomComboInfo("Replace VerRaise by Vercure instead", "Do those puny dead bodies really deserve you wasting 2 GCDs?", ADV.JobID)]
+    AdvVerRaiseToVerCureFeature = 1003,
+
     [CustomComboInfo("Variant Raise Feature", "Replace Ascend, Ressurection, Egeiro, Raise, Verraise, and Angel Whisper with Variant Raise II when in a variant dungeon.", ADV.JobID)]
     AdvVariantRaiseFeature = 1001,
 
@@ -94,27 +104,27 @@ public enum CustomComboPreset
     // ====================================================================================
     #region ASTROLOGIAN
 
-    [CustomComboInfo("Malefic to Draw", "Replace Malefic with Draw when no card is drawn and a card is available.", AST.JobID)]
-    AstrologianMaleficDrawFeature = 3309,
+    //[CustomComboInfo("Malefic to Draw", "Replace Malefic with Draw when no card is drawn and a card is available.", AST.JobID)]
+    //AstrologianMaleficDrawFeature = 3309,
 
-    [CustomComboInfo("Gravity to Draw", "Replace Gravity with Draw when no card is drawn and a card is available.", AST.JobID)]
-    AstrologianGravityDrawFeature = 3310,
+    //[CustomComboInfo("Gravity to Draw", "Replace Gravity with Draw when no card is drawn and a card is available.", AST.JobID)]
+    //AstrologianGravityDrawFeature = 3310,
 
-    [CustomComboInfo("Play to Draw", "Replace Play with Draw when no card is drawn and a card is available.", AST.JobID)]
-    AstrologianPlayDrawFeature = 3301,
+    //[CustomComboInfo("Play to Draw", "Replace Play with Draw when no card is drawn and a card is available.", AST.JobID)]
+    //AstrologianPlayDrawFeature = 3301,
 
-    [ParentCombo(AstrologianPlayDrawFeature)]
-    [CustomComboInfo("Play to Draw to Astrodyne", "Replace Play with Astrodyne when seals are full and Draw is on cooldown or a card is drawn.", AST.JobID)]
-    AstrologianPlayDrawAstrodyneFeature = 3307,
+    //[ParentCombo(AstrologianPlayDrawFeature)]
+    //[CustomComboInfo("Play to Draw to Astrodyne", "Replace Play with Astrodyne when seals are full and Draw is on cooldown or a card is drawn.", AST.JobID)]
+    //AstrologianPlayDrawAstrodyneFeature = 3307,
 
-    [CustomComboInfo("Play to Redraw", "Replace Play with Redraw if a card is drawn and would grant a seal you already have.", AST.JobID)]
-    AstrologianPlayRedrawFeature = 3311,
+    //[CustomComboInfo("Play to Redraw", "Replace Play with Redraw if a card is drawn and would grant a seal you already have.", AST.JobID)]
+    //AstrologianPlayRedrawFeature = 3311,
 
-    [CustomComboInfo("Play to Astrodyne", "Replace Play with Astrodyne when seals are full.", AST.JobID)]
-    AstrologianPlayAstrodyneFeature = 3304,
+    //[CustomComboInfo("Play to Astrodyne", "Replace Play with Astrodyne when seals are full.", AST.JobID)]
+    //AstrologianPlayAstrodyneFeature = 3304,
 
-    [CustomComboInfo("Draw Lockout", "Replace Draw (not Play to Draw) with Malefic when a card is drawn.", AST.JobID)]
-    AstrologianDrawLockoutFeature = 3306,
+    //[CustomComboInfo("Draw Lockout", "Replace Draw (not Play to Draw) with Malefic when a card is drawn.", AST.JobID)]
+    //AstrologianDrawLockoutFeature = 3306,
 
     [CustomComboInfo("Benefic 2 to Benefic Level Sync", "Replace Benefic 2 with Benefic when below level 26 in synced content.", AST.JobID)]
     AstrologianBeneficSyncFeature = 3303,
@@ -158,19 +168,11 @@ public enum CustomComboPreset
     [CustomComboInfo("Blizzard 1/3 Feature", "Replace Blizzard 1 with Blizzard 3 when unlocked and becomes Paradox when available.", BLM.JobID)]
     BlackBlizzardFeature = 2505,
 
-    [ParentCombo(BlackBlizzardFeature)]
-    [CustomComboInfo("Paradox only during Umbral Ice", "Only replace Blizzard with Paradox during Umbral Ice.", BLM.JobID)]
-    BlackBlizzardParadoxOption = 2521,
-
     [CustomComboInfo("Freeze/Flare Feature", "Freeze and Flare become whichever action you can currently use.", BLM.JobID)]
     BlackFreezeFlareFeature = 2506,
 
     [CustomComboInfo("Fire 2 Feature", "(High) Fire 2 becomes Flare in Astral Fire when only 1 Umbral Heart is active, less than 3000 mp, or during Enhanced Flare.", BLM.JobID)]
     BlackFire2Feature = 2508,
-
-    [ParentCombo(BlackFire2Feature)]
-    [CustomComboInfo("Fire 2 Triplecast Option", "Shorten rotation when Triplecast is active to make both Flare casts instant.", BLM.JobID)]
-    BlackFire2TriplecastOption = 2523,
 
     [CustomComboInfo("Ice 2 Feature", "(High) Blizzard 2 becomes Freeze in Umbral Ice.", BLM.JobID)]
     BlackBlizzard2Feature = 2509,
@@ -183,13 +185,6 @@ public enum CustomComboPreset
 
     [CustomComboInfo("Scathe/Xenoglossy Feature", "Scathe becomes Xenoglossy when available.", BLM.JobID)]
     BlackScatheFeature = 2507,
-
-    [CustomComboInfo("Thunder 3/4 to Sharpcast", "Thunder 3 and Thunder 4 become Sharpcast when available.", BLM.JobID)]
-    BlackThunderFeature = 2519,
-
-    [ParentCombo(BlackThunderFeature)]
-    [CustomComboInfo("Delay replacement after casting Thunder", "Delay changing Thunder into Sharpcast immediately after casting Thunder.", BLM.JobID)]
-    BlackThunderDelayOption = 2520,
 
     #endregion
     // ====================================================================================
@@ -318,6 +313,13 @@ public enum CustomComboPreset
     [CustomComboInfo("Devilment Feature", "Replace Devilment with Starfall Dance when active.", DNC.JobID)]
     DancerDevilmentFeature = 3807,
 
+    [CustomComboInfo("Last Dance Feature", "Replace Standard Step by Last Dance if available.", DNC.JobID)]
+    DancerLastDanceFeature = 3813,
+
+    [ParentCombo(DancerLastDanceFeature)]
+    [CustomComboInfo("Finishing Move Priority", "Priorize Finishing Move over Last Dance when replacing Standard Step.", DNC.JobID)]
+    DancerFinishingMovePriorityFeature = 3814,
+
     #endregion
     // ====================================================================================
     #region DARK KNIGHT
@@ -355,15 +357,6 @@ public enum CustomComboPreset
     // ====================================================================================
     #region DRAGOON
 
-    [CustomComboInfo("Jump + Mirage Dive", "Replace (High) Jump with Mirage Dive when Dive Ready.", DRG.JobID)]
-    DragoonJumpFeature = 2201,
-
-    [CustomComboInfo("Coerthan Torment Combo", "Replace Coerthan Torment with its combo chain.", DRG.JobID)]
-    DragoonCoerthanTormentCombo = 2202,
-
-    [CustomComboInfo("Coerthan Torment Wyrmwind Feature", "Replace Coerthan Torment with Wyrmwind Thrust when you have two Firstminds' Focus.", DRG.JobID)]
-    DragoonCoerthanWyrmwindFeature = 2207,
-
     [CustomComboInfo("Chaos Thrust Combo", "Replace Chaos Thrust with its combo chain.", DRG.JobID)]
     DragoonChaosThrustCombo = 2203,
 
@@ -378,8 +371,11 @@ public enum CustomComboPreset
     [CustomComboInfo("Full Thrust Vorpal Thrust Option", "Replace Full Thrust with its combo chain starting instead at Vorpal Thrust, not True Thrust, while no combo is ongoing.", DRG.JobID)]
     DragoonFullThrustComboOption = 2210,
 
-    [CustomComboInfo("Wheeling Thrust / Fang and Claw Option", "Replace Chaos Thrust with Wheeling Thrust and Full Thrust with Fang and Claw when you have either Enhanced Fang and Claw or Wheeling Thrust.", DRG.JobID)]
-    DragoonFangThrustFeature = 2205,
+    [CustomComboInfo("Coerthan Torment Combo", "Replace Coerthan Torment with its combo chain.", DRG.JobID)]
+    DragoonCoerthanTormentCombo = 2202,
+
+    [CustomComboInfo("Coerthan Torment Wyrmwind Feature", "Replace Coerthan Torment with Wyrmwind Thrust when you have two Firstminds' Focus.", DRG.JobID)]
+    DragoonCoerthanWyrmwindFeature = 2207,
 
     [ConflictingCombos(DragoonStardiverDragonfireDiveFeature)]
     [CustomComboInfo("Stardiver to Nastrond", "Replace Stardiver with Nastrond when Nastrond is off-cooldown, and Geirskogul outside of Life of the Dragon.", DRG.JobID)]
@@ -389,15 +385,10 @@ public enum CustomComboPreset
     [CustomComboInfo("Stardiver to Dragonfire Dive", "Replace Stardiver with Dragonfire Dive when the latter is off cooldown (and you have more than 7.5s of LotD left), or outside of Life of the Dragon.", DRG.JobID)]
     DragoonStardiverDragonfireDiveFeature = 2208,
 
-    [SecretCustomCombo]
-    [ConflictingCombos(DragoonStardiverDragonfireDiveFeature, DragoonStardiverNastrondFeature)]
-    [CustomComboInfo("Dive Dive Dive!", "Replace Spineshatter Dive, Dragonfire Dive, and Stardiver with whichever is available.", DRG.JobID)]
-    DragoonDiveFeature = 2211,
-
     [CustomComboInfo("Geirskogul to Wyrmwind Thrust", "Replace Geirskogul with Wyrmwind Thrust when available and Geirskogul or Nastrond are on cooldown.", DRG.JobID)]
     DragoonGeirskogulWyrmwindFeature = 2212,
 
-    [CustomComboInfo("Lance Charge to Dragon Sight and Battle Litany", "Replace Lance Charge with Dragon Sight and Battle Litany when available and Lance Charge is on cooldown.", DRG.JobID)]
+    [CustomComboInfo("Lance Charge to Battle Litany", "Replace Lance Charge Battle Litany when available and Lance Charge is on cooldown.", DRG.JobID)]
     DragoonLanceChargeFeature = 2213,
 
     #endregion
@@ -416,6 +407,9 @@ public enum CustomComboPreset
 
     [CustomComboInfo("Burst Strike Continuation", "Replace Burst Strike with Continuation moves when appropriate.", GNB.JobID)]
     GunbreakerBurstStrikeCont = 3703,
+
+    [CustomComboInfo("Fated Circle Continuation", "Replace Burst Strike with Continuation moves when appropriate.", GNB.JobID)]
+    GunbreakerFatedCircleCont = 3714,
 
     [SecretCustomCombo]
     [CustomComboInfo("Sonic Shock Feature", "Replace Bow Shock and Sonic Break with one or the other depending on which is on cooldown.", GNB.JobID)]
@@ -499,41 +493,41 @@ public enum CustomComboPreset
     [CustomComboInfo("Monk AoE Combo", "Replace Masterful Blitz with the AoE combo chain. This was changed from Rockbreaker due to an action queueing bug.", MNK.JobID)]
     MonkAoECombo = 2001,
 
-    [CustomComboInfo("Dragon Kick / Bootshine Feature", "Replace Dragon Kick with Bootshine if Leaden Fist is up.", MNK.JobID)]
-    MonkBootshineFeature = 2011,
+    //[CustomComboInfo("Dragon Kick / Bootshine Feature", "Replace Dragon Kick with Bootshine if Leaden Fist is up.", MNK.JobID)]
+    //MonkBootshineFeature = 2011,
 
-    [ConflictingCombos(MonkTrueStrikeFeature)]
-    [CustomComboInfo("Twin Snakes / True Strike Feature", "Replace Twin Snakes with True Strike if Twin Snakes has more than 6s remaining.", MNK.JobID)]
-    MonkTwinSnakesFeature = 2013,
+    //[ConflictingCombos(MonkTrueStrikeFeature)]
+    //[CustomComboInfo("Twin Snakes / True Strike Feature", "Replace Twin Snakes with True Strike if Twin Snakes has more than 6s remaining.", MNK.JobID)]
+    //MonkTwinSnakesFeature = 2013,
 
-    [ParentCombo(MonkTwinSnakesFeature)]
-    [CustomComboInfo("Formless Snakes Option", "While Formless Fist is active, do not replace Twin Snakes.", MNK.JobID)]
-    MonkFormlessSnakesOption = 2015,
+    //[ParentCombo(MonkTwinSnakesFeature)]
+    //[CustomComboInfo("Formless Snakes Option", "While Formless Fist is active, do not replace Twin Snakes.", MNK.JobID)]
+    //MonkFormlessSnakesOption = 2015,
 
-    [ConflictingCombos(MonkTwinSnakesFeature)]
-    [CustomComboInfo("True Strike / Twin Snakes Feature", "Replace True Strike with Twin Snakes if Twin Snakes has less than 6s remaining or isn't applied yet.", MNK.JobID)]
-    MonkTrueStrikeFeature = 2016,
+    //[ConflictingCombos(MonkTwinSnakesFeature)]
+    //[CustomComboInfo("True Strike / Twin Snakes Feature", "Replace True Strike with Twin Snakes if Twin Snakes has less than 6s remaining or isn't applied yet.", MNK.JobID)]
+    //MonkTrueStrikeFeature = 2016,
 
-    [ParentCombo(MonkTrueStrikeFeature)]
-    [CustomComboInfo("Formless Strike Option", "While Formless Fist is active, do not replace True Strike.", MNK.JobID)]
-    MonkFormlessStrikeOption = 2018,
+    //[ParentCombo(MonkTrueStrikeFeature)]
+    //[CustomComboInfo("Formless Strike Option", "While Formless Fist is active, do not replace True Strike.", MNK.JobID)]
+    //MonkFormlessStrikeOption = 2018,
 
-    [ConflictingCombos(MonkSnapPunchFeature)]
-    [CustomComboInfo("Demolish / Snap Punch Feature", "Replace Demolish with Snap Punch if Demolish has more than 6s remaining on your current target.", MNK.JobID)]
-    MonkDemolishFeature = 2014,
+    //[ConflictingCombos(MonkSnapPunchFeature)]
+    //[CustomComboInfo("Demolish / Snap Punch Feature", "Replace Demolish with Snap Punch if Demolish has more than 6s remaining on your current target.", MNK.JobID)]
+    //MonkDemolishFeature = 2014,
 
-    [ConflictingCombos(MonkDemolishFeature)]
-    [CustomComboInfo("Snap Punch / Demolish Feature", "Replace Snap Punch with Demolish if Demolish has less than 6s remaining on your current target or isn't applied yet.", MNK.JobID)]
-    MonkSnapPunchFeature = 2017,
+    //[ConflictingCombos(MonkDemolishFeature)]
+    //[CustomComboInfo("Snap Punch / Demolish Feature", "Replace Snap Punch with Demolish if Demolish has less than 6s remaining on your current target or isn't applied yet.", MNK.JobID)]
+    //MonkSnapPunchFeature = 2017,
 
     [CustomComboInfo("Dragon Balance Feature", "Replace Dragon Kick with Masterful Blitz if you have 3 Beast Chakra.", MNK.JobID)]
     MonkDragonKickBalanceFeature = 2005,
 
-    [CustomComboInfo("Dragon Meditation Feature", "Replace Dragon Kick with Meditation when out of combat and the Fifth Chakra is not open.", MNK.JobID)]
-    MonkDragonKickMeditationFeature = 2012,
+    //[CustomComboInfo("Dragon Meditation Feature", "Replace Dragon Kick with Meditation when out of combat and the Fifth Chakra is not open.", MNK.JobID)]
+    //MonkDragonKickMeditationFeature = 2012,
 
-    [CustomComboInfo("Howling Fist / Meditation Feature", "Replace Howling Fist with Meditation when the Fifth Chakra is not open.", MNK.JobID)]
-    MonkHowlingFistMeditationFeature = 2003,
+    //[CustomComboInfo("Howling Fist / Meditation Feature", "Replace Howling Fist with Meditation when the Fifth Chakra is not open.", MNK.JobID)]
+    //MonkHowlingFistMeditationFeature = 2003,
 
     [CustomComboInfo("Perfect Balance Feature", "Replace Perfect Balance with Masterful Blitz when you have 3 Beast Chakra.", MNK.JobID)]
     MonkPerfectBalanceFeature = 2004,
@@ -551,9 +545,9 @@ public enum CustomComboPreset
     [CustomComboInfo("Aeolian Edge Combo", "Replace Aeolian Edge with its combo chain.", NIN.JobID)]
     NinjaAeolianEdgeCombo = 3002,
 
-    [SecretCustomCombo]
-    [CustomComboInfo("Aeolian Edge / Huton Feature", "Replaces Aeolian Edge with Armor Crush when Huton has less than 30 seconds remaining and Huraijin when missing.", NIN.JobID)]
-    NinjaAeolianEdgeHutonFeature = 3019,
+    //[SecretCustomCombo]
+    //[CustomComboInfo("Auto-Refill Kazematoi / Huton Feature", "Replaces Aeolian Edge with Armor Crush when you don't have any Kazematoi left.", NIN.JobID)]
+    //NinjaKazematoiFeature = 3019,
 
     [CustomComboInfo("Aeolian Edge / Ninjutsu Feature", "Replace Aeolian Edge with Ninjutsu if any Mudra are used.", NIN.JobID)]
     NinjaAeolianNinjutsuFeature = 3008,
@@ -570,19 +564,19 @@ public enum CustomComboPreset
     [CustomComboInfo("Armor Crush / Raiju Feature", "Replace the Armor Crush combo with Forked Raiju when available.", NIN.JobID)]
     NinjaArmorCrushRaijuFeature = 3012,
 
-    [CustomComboInfo("Huraijin / Armor Crush Combo", "Replace Huraijin with Armor Crush after using Gust Slash when Huton is missing.", NIN.JobID)]
-    NinjaHuraijinArmorCrushCombo = 3010,
+    //[CustomComboInfo("Huraijin / Armor Crush Combo", "Replace Huraijin with Armor Crush after using Gust Slash when Huton is missing.", NIN.JobID)]
+    //NinjaHuraijinArmorCrushCombo = 3010,
 
-    [CustomComboInfo("Huraijin / Ninjutsu Feature", "Replace Huraijin with Ninjutsu if any Mudra are used.", NIN.JobID)]
-    NinjaHuraijinNinjutsuFeature = 3009,
+    //[CustomComboInfo("Huraijin / Ninjutsu Feature", "Replace Huraijin with Ninjutsu if any Mudra are used.", NIN.JobID)]
+    //NinjaHuraijinNinjutsuFeature = 3009,
 
-    [ConflictingCombos(NinjaHuraijinFleetingRaijuFeature)]
-    [CustomComboInfo("Huraijin / Forked Raiju Feature", "Replace Huraijin with Forked Raiju when available.", NIN.JobID)]
-    NinjaHuraijinForkedRaijuFeature = 3011,
+    //[ConflictingCombos(NinjaHuraijinFleetingRaijuFeature)]
+    //[CustomComboInfo("Huraijin / Forked Raiju Feature", "Replace Huraijin with Forked Raiju when available.", NIN.JobID)]
+    //NinjaHuraijinForkedRaijuFeature = 3011,
 
-    [ConflictingCombos(NinjaHuraijinForkedRaijuFeature)]
-    [CustomComboInfo("Huraijin / Fleeting Raiju Option", "Replace Huraijin with Fleeting Raiju when available.", NIN.JobID)]
-    NinjaHuraijinFleetingRaijuFeature = 3014,
+    //[ConflictingCombos(NinjaHuraijinForkedRaijuFeature)]
+    //[CustomComboInfo("Huraijin / Fleeting Raiju Option", "Replace Huraijin with Fleeting Raiju when available.", NIN.JobID)]
+    //NinjaHuraijinFleetingRaijuFeature = 3014,
 
     [CustomComboInfo("Hakke Mujinsatsu Combo", "Replace Hakke Mujinsatsu with its combo chain.", NIN.JobID)]
     NinjaHakkeMujinsatsuCombo = 3003,
@@ -607,7 +601,7 @@ public enum CustomComboPreset
     [CustomComboInfo("Kassatsu Chi/Jin Feature", "Replace Chi with Jin while Kassatsu is up if you have Enhanced Kassatsu.", NIN.JobID)]
     NinjaKassatsuChiJinFeature = 3006,
 
-    [CustomComboInfo("Hide to Mug", "Replace Hide with Mug while in combat.", NIN.JobID)]
+    [CustomComboInfo("Hide to Mug/Dokumori", "Replace Hide with Mug/Dokumori while in combat.", NIN.JobID)]
     NinjaHideMugFeature = 3007,
 
     [CustomComboInfo("Hide to Ninjutsu", "Replace Hide with Ninjutsu if any Mudra are active.", NIN.JobID)]
@@ -629,8 +623,8 @@ public enum CustomComboPreset
     PaladinRoyalAuthorityFightOrFlightFeature = 1915,
 
     [ParentCombo(PaladinRoyalAuthorityCombo)]
-    [CustomComboInfo("Royal Authority Atonement Feature", "Replace Royal Authority with Atonement when under the effect of Sword Oath.", PLD.JobID)]
-    PaladinRoyalAuthorityAtonementFeature = 1903,
+    [CustomComboInfo("Royal Authority Atonement Feature", "Replace Royal Authority with Atonement, Supplication & Sepulchre when under the effect of the corresponding buffs.", PLD.JobID)]
+    PaladinRoyalAuthorityAtonementComboFeature = 1903,
 
     [CustomComboInfo("Prominence Combo", "Replace Prominence with its combo chain.", PLD.JobID)]
     PaladinProminenceCombo = 1904,
@@ -660,6 +654,45 @@ public enum CustomComboPreset
 
     [CustomComboInfo("Shields on your Feet Feature", "Replace Shield Bash with Low Blow when available.", PLD.JobID)]
     PaladinShieldBashFeature = 1910,
+
+    #endregion
+    // ====================================================================================
+    #region PICTOMANCER
+
+    [CustomComboInfo("Subtractive Single-Target Combo", "Replace Fire in Red and its combo chain with Blizzard in Cyan and its combo chain when Subtractive Palette is active.", PCT.JobID)]
+    PictomancerSubtractiveSTCombo = 4201,
+
+    [CustomComboInfo("Subtractive AoE Combo", "Replace Fire II in Red and its combo chain with Blizzard II in Cyan and its combo chain when Subtractive Palette is active.", PCT.JobID)]
+    PictomancerSubtractiveAoECombo = 4202,
+
+    //[SecretCustomCombo]
+    //[CustomComboInfo("Subtractive Autocast", "Replace Fire in Red and Fire II in Red, and their combo chains, with Subtractive Palette if the next cast in the chain would overcap the Palette Gauge.", PCT.JobID)]
+    //PictomancerSubtractiveAutoCombo = 4205,
+
+    //[CustomComboInfo("Holy Comet Combo", "Replace Holy in White with Comet in Black when usable.", PCT.JobID)]
+    //PictomancerHolyCometCombo = 4203,
+
+    //[SecretCustomCombo]
+    //[CustomComboInfo("Holy Autocast", "Replace Fire in Red, Fire II in Red, Blizzard in Cyan, Blizzard II in Cyan, and their combo chains, with Holy or Comet if the next cast would overcap the Paint Gauge.", PCT.JobID)]
+    //PictomancerHolyAutoCombo = 4204,
+
+    //[CustomComboInfo("Creature Muse/Motif Combo", "Replace Creature Motif (Pom Motif etc) with Living Muse (Pom Muse etc) when the Creature Canvas is painted.", PCT.JobID)]
+    //PictomancerCreatureMotifCombo = 4206,
+
+    //[CustomComboInfo("Creature Muse/Mog of the Ages Combo", "Also replace Creature Motif (Pom Motif etc) with Mog of the Ages and Retribution of the Madeen when they are usable.", PCT.JobID)]
+    //PictomancerCreatureMogCombo = 4207,
+
+    //[CustomComboInfo("Weapon Muse/Motif Combo", "Replace Hammer Motif with Striking Muse when the Weapon Canvas is painted.", PCT.JobID)]
+    //PictomancerWeaponMotifCombo = 4208,
+
+    [CustomComboInfo("Hammer Time", "Replace Hammer Motif with Hammer Brush and its combo chain when they are usable.", PCT.JobID)]
+    PictomancerWeaponHammerCombo = 4209,
+
+    //[CustomComboInfo("Landscape Muse/Motif Combo", "Replace Starry Sky Motif with Starry Muse when the Landscape Canvas is painted.", PCT.JobID)]
+    //PictomancerLandscapeMotifCombo = 4210,
+
+    //[CustomComboInfo("Landscape Muse/Star Prism Combo", "Replace Starry Muse with Star Prism when it is usable.", PCT.JobID)]
+    //PictomancerLandscapePrismCombo = 4211,
 
     #endregion
     // ====================================================================================
@@ -937,8 +970,8 @@ public enum CustomComboPreset
     [CustomComboInfo("Kyuten to Guren", "Replace Hissatsu: Kyuten with Guren when available.", SAM.JobID)]
     SamuraiKyutenGurenFeature = 3415,
 
-    [CustomComboInfo("Kyuten to Shoha II", "Replace Hissatsu: Kyuten with Shoha II when Meditation is full.", SAM.JobID)]
-    SamuraiKyutenShoha2Feature = 3412,
+    //[CustomComboInfo("Kyuten to Shoha II", "Replace Hissatsu: Kyuten with Shoha II when Meditation is full.", SAM.JobID)]
+    //SamuraiKyutenShoha2Feature = 3412,
 
     [CustomComboInfo("Ikishoten Namikiri Feature", "Replace Ikishoten with Ogi Namikiri and then Kaeshi Namikiri when available.", SAM.JobID)]
     SamuraiIkishotenNamikiriFeature = 3411,
@@ -988,50 +1021,57 @@ public enum CustomComboPreset
     // ====================================================================================
     #region SUMMONER
 
-    [CustomComboInfo("ED Fester Feature", "Change Fester into Energy Drain when out of Aetherflow stacks.", SMN.JobID)]
-    SummonerEDFesterFeature = 2701,
-
-    [CustomComboInfo("ES Painflare Feature", "Change Painflare into Energy Syphon when out of Aetherflow stacks.", SMN.JobID)]
-    SummonerESPainflareFeature = 2702,
-
     [CustomComboInfo("Ruin Feature", "Change Ruin into Gemburst when attuned.", SMN.JobID)]
     SummonerRuinFeature = 2703,
-
-    [CustomComboInfo("Titan's Favor Ruin Feature", "Change Ruin into Mountain Buster (oGCD) when available.", SMN.JobID)]
-    SummonerRuinTitansFavorFeature = 2713,
-
-    [CustomComboInfo("Further Ruin Feature", "Change Ruin into Ruin4 when available and appropriate.", SMN.JobID)]
-    SummonerFurtherRuinFeature = 2705,
 
     [CustomComboInfo("Outburst Feature", "Change Outburst into Precious Brilliance when attuned.", SMN.JobID)]
     SummonerOutburstFeature = 2704,
 
+    [CustomComboInfo("Titan's Favor Ruin Feature", "Change Ruin into Mountain Buster (oGCD) when available.", SMN.JobID)]
+    SummonerRuinTitansFavorFeature = 2713,
+
     [CustomComboInfo("Titan's Favor Outburst Feature", "Change Outburst into Mountain Buster (oGCD) when available.", SMN.JobID)]
     SummonerOutburstTitansFavorFeature = 2714,
 
-    [CustomComboInfo("Further Outburst Feature", "Change Outburst into Ruin4 when available and appropriate.", SMN.JobID)]
-    SummonerFurtherOutburstFeature = 2706,
-
-    [CustomComboInfo("Shiny Titan's Favor Feature", "Change Gemshine and Precious Brilliance into Mountain Buster (oGCD) when available.", SMN.JobID)]
+    [CustomComboInfo("Gems Titan's Favor Feature", "Change Gemshine and Precious Brilliance into Mountain Buster (oGCD) when available.", SMN.JobID)]
     SummonerShinyTitansFavorFeature = 2707,
 
-    [CustomComboInfo("Further Shiny Feature", "Change Gemshine and Precious Brilliance into Ruin4 when available and appropriate.", SMN.JobID)]
+    [CustomComboInfo("Ruin 4 to Ruin Feature", "Change Ruin into Ruin4 when available and appropriate.", SMN.JobID)]
+    SummonerFurtherRuinFeature = 2705,
+
+    [CustomComboInfo("Ruin 4 to Outburst Feature", "Change Outburst into Ruin4 when available and appropriate.", SMN.JobID)]
+    SummonerFurtherOutburstFeature = 2706,
+
+    [CustomComboInfo("Gems Ruin 4 Feature", "Change Gemshine and Precious Brilliance into Ruin 4 when available and appropriate.", SMN.JobID)]
     SummonerFurtherShinyFeature = 2708,
 
-    [CustomComboInfo("Shiny Enkindle Feature", "Change Gemshine and Precious Brilliance to Enkindle when Bahamut or Phoenix are summoned.", SMN.JobID)]
+    [CustomComboInfo("Gems Enkindle Feature", "Change Gemshine and Precious Brilliance to Enkindle when Bahamut, Phoenix or Summon Solar Bahamut are summoned.", SMN.JobID)]
     SummonerShinyEnkindleFeature = 2709,
 
-    [CustomComboInfo("Demi Enkindle Feature", "Change Summon Bahamut and Summon Phoenix into Enkindle when Bahamut or Phoenix are summoned.", SMN.JobID)]
+    [CustomComboInfo("Demi Enkindle Feature", "Change Summon Bahamut and Summon Phoenix and Summon Solar Bahamut into Enkindle when Bahamut or Phoenix are summoned.", SMN.JobID)]
     SummonerDemiEnkindleFeature = 2710,
 
-    [CustomComboInfo("Searing Demi Feature", "Change Summon Bahamut and Summon Phoenix into Searing Light when Bahamut is ready to be summoned, Searing Light is off cooldown, and you are in combat.", SMN.JobID)]
+    [CustomComboInfo("Searing Demi Feature", "Change Summon Bahamut, Summon Phoenix and Summon Solar Bahamut into Searing Light when any of them is ready to be summoned, Searing Light is off cooldown, and you are in combat.", SMN.JobID)]
     SummonerDemiSearingLightFeature = 2715,
+
+    [CustomComboInfo("ED Fester/Necrosis Feature", "Change Fester/Necrosis into Energy Drain when out of Aetherflow stacks.", SMN.JobID)]
+    SummonerEDFesterFeature = 2701,
+
+    [CustomComboInfo("ES Painflare Feature", "Change Painflare into Energy Syphon when out of Aetherflow stacks.", SMN.JobID)]
+    SummonerESPainflareFeature = 2702,
 
     [CustomComboInfo("Radiant Carbuncle Feature", "Change Radiant Aegis into Summon Carbuncle when no pet has been summoned.", SMN.JobID)]
     SummonerRadiantCarbuncleFeature = 2711,
 
     [CustomComboInfo("Demi Carbuncle Feature", "Change Summon Bahamut into Summon Carbuncle when no pet has been summoned.", SMN.JobID)]
     SummonerDemiCarbuncleFeature = 2716,
+
+    #endregion
+    // ====================================================================================
+    #region VIPER
+
+    [CustomComboInfo("Viper exists!", "No combos planned for now as the job is already combo-heavy. Stay tuned!", VPR.JobID)]
+    ViperDoingNothing = 4100,
 
     #endregion
     // ====================================================================================
@@ -1098,6 +1138,9 @@ public enum CustomComboPreset
 
     [CustomComboInfo("Afflatus Feature", "Replace Cure 2 with Afflatus Solace and Medica with Afflatus Rapture when a Lily is available.", WHM.JobID)]
     WhiteMageAfflatusFeature = 2404,
+
+    [CustomComboInfo("Glare4 Feature", "Replace Glare 3 with Glare 4 when a stack is available.", WHM.JobID)]
+    WhiteMageGlare4Feature = 2407,
 
     #endregion
     // ====================================================================================

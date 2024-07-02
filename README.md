@@ -1,9 +1,13 @@
-# XIVCombo Expanded
+# XIVCombo Expanded [![Build](https://github.com/MKhayle/XIVComboPlugin/actions/workflows/build.yml/badge.svg)](https://github.com/daemitus/XIVComboPlugin/actions/workflows/build.yml) 
 
-[![Build](https://github.com/MKhayle/XIVComboPlugin/actions/workflows/build.yml/badge.svg)](https://github.com/daemitus/XIVComboPlugin/actions/workflows/build.yml)
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R6R2F1EYP)
 
 This plugin condenses combos and mutually exclusive abilities onto a single button. 
 Thanks to Meli for the initial start, and obviously goat for making any of this possible.
+
+## [Dawntrail Status](https://github.com/MKhayle/XIVComboExpanded/discussions/250)
+Every job should be working correctly at lvl 90 and below. Nothing is guaranteed above 90 and some features can break. Please report issues here!
 
 ## Note 
 This fork was initially [daemitus](https://github.com/daemitus)' work. I have been maintaining it in his stead since he stopped playing the game. 

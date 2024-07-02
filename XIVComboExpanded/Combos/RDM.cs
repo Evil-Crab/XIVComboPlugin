@@ -16,6 +16,7 @@ internal static class RDM
         Verstone = 7511,
         Zwerchhau = 7512,
         Moulinet = 7513,
+        Vercure = 7514,
         Redoublement = 7516,
         Fleche = 7517,
         Acceleration = 7518,

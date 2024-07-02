@@ -19,6 +19,8 @@ internal static class MCH
         // Charges
         GaussRound = 2874,
         Ricochet = 2890,
+        DoubleCheck = 36979,
+        Checkmate = 36980,
         // AoE
         SpreadShot = 2870,
         AutoCrossbow = 16497,
@@ -32,17 +34,23 @@ internal static class MCH
         Wildfire = 2878,
         Detonator = 16766,
         Hypercharge = 17209,
+        BarrelStabilizer = 7414,
         HeatBlast = 7410,
+        BlazingShot = 36978,
         HotShot = 2872,
         Drill = 16498,
         Bioblaster = 16499,
         AirAnchor = 16500,
-        Chainsaw = 25788;
+        Chainsaw = 25788,
+        Excavator = 36981,
+        FullMetal = 36982;
 
     public static class Buffs
     {
         public const ushort
-            Placeholder = 0;
+            HyperchargeReady = 3864,
+            ExcavatorReady = 3865,
+            FullMetalPrepared = 3866;
     }
 
     public static class Debuffs
@@ -67,10 +75,16 @@ internal static class MCH
             Drill = 58,
             HeatedSlugshot = 60,
             HeatedCleanShot = 64,
+            BarrelStabilizer = 66,
+            BlazingShot = 68,
             ChargedActionMastery = 74,
             AirAnchor = 76,
             QueenOverdrive = 80,
-            Chainsaw = 90;
+            Chainsaw = 90,
+            DoubleCheck = 92,
+            CheckMate = 92,
+            Excavator = 96,
+            FullMetal = 100;
     }
 }
 
@@ -87,7 +101,16 @@ internal class MachinistCleanShot : CustomCombo
             if (IsEnabled(CustomComboPreset.MachinistHypercomboFeature))
             {
                 if (gauge.IsOverheated && level >= MCH.Levels.HeatBlast)
-                    return MCH.HeatBlast;
+                {
+                    if (gauge.IsOverheated && level < MCH.Levels.BlazingShot)
+                    {
+                        return MCH.HeatBlast;
+                    }
+                    else
+                    {
+                        return MCH.BlazingShot;
+                    }
+                }
             }
 
             if (comboTime > 0)
@@ -115,7 +138,9 @@ internal class MachinistGaussRoundRicochet : CustomCombo
 
     protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
     {
-        if (actionID == MCH.GaussRound || actionID == MCH.Ricochet)
+        var richochet = level < MCH.Levels.CheckMate ? MCH.Ricochet : MCH.Checkmate;
+        var gaussRound = level < MCH.Levels.DoubleCheck ? MCH.GaussRound : MCH.DoubleCheck;
+        if (actionID == MCH.GaussRound || actionID == richochet)
         {
             var gauge = GetJobGauge<MCHGauge>();
 
@@ -126,9 +151,9 @@ internal class MachinistGaussRoundRicochet : CustomCombo
             }
 
             if (level >= MCH.Levels.Ricochet)
-                return CalcBestAction(actionID, MCH.GaussRound, MCH.Ricochet);
+                return CalcBestAction(actionID, gaussRound, richochet);
 
-            return MCH.GaussRound;
+            return gaussRound;
         }
 
         return actionID;
@@ -160,7 +185,7 @@ internal class MachinistHeatBlastAutoCrossbow : CustomCombo
 
     protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
     {
-        if (actionID == MCH.HeatBlast || actionID == MCH.AutoCrossbow)
+        if (actionID == MCH.HeatBlast || actionID == MCH.BlazingShot || actionID == MCH.AutoCrossbow)
         {
             var gauge = GetJobGauge<MCHGauge>();
 

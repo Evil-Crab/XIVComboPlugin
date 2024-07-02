@@ -41,9 +41,11 @@ internal static class BRD
     {
         public const ushort
             StraightShotReady = 122,
+            Barrage = 128,
             WanderersMinuet = 2009,
             BlastShotReady = 2692,
-            ShadowbiteReady = 3002;
+            ShadowbiteReady = 3002,
+            HawksEye = 3861;
     }
 
     public static class Debuffs
@@ -105,7 +107,7 @@ internal class BardHeavyShot : CustomCombo
 
             if (IsEnabled(CustomComboPreset.BardStraightShotUpgradeFeature))
             {
-                if (level >= BRD.Levels.StraightShot && HasEffect(BRD.Buffs.StraightShotReady))
+                if (level >= BRD.Levels.StraightShot && (HasEffect(BRD.Buffs.HawksEye) || HasEffect(BRD.Buffs.Barrage)))
                     // Refulgent Arrow
                     return OriginalHook(BRD.StraightShot);
             }
@@ -200,7 +202,7 @@ internal class BardQuickNock : CustomCombo
 
             if (IsEnabled(CustomComboPreset.BardShadowbiteFeature))
             {
-                if (level >= BRD.Levels.Shadowbite && HasEffect(BRD.Buffs.ShadowbiteReady))
+                if (level >= BRD.Levels.Shadowbite && HasEffect(BRD.Buffs.HawksEye))
                 {
                     if (IsEnabled(CustomComboPreset.BardShadowbiteBarrageFeature))
                     {
@@ -353,7 +355,7 @@ internal class BardBarrage : CustomCombo
     {
         if (actionID == BRD.Barrage)
         {
-            if (level >= BRD.Levels.StraightShot && HasEffect(BRD.Buffs.StraightShotReady) && !HasEffect(BRD.Buffs.ShadowbiteReady))
+            if (level >= BRD.Levels.StraightShot && HasEffect(BRD.Buffs.HawksEye))
                 // Refulgent Arrow
                 return OriginalHook(BRD.StraightShot);
         }
